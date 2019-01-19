@@ -14,12 +14,17 @@ use String::Formatter method_stringf => {
     codes => {
         A => sub { $_[0]->albumartist },
         a => sub { $_[0]->artist },
+        b => sub { $_[0]->albumsort },
         C => sub { $_[0]->composer },
+        c => sub { $_[0]->comment },
         D => sub { $_[0]->disc },
         d => sub { $_[0]->album },
+        e => sub { $_[0]->label },
+        F => sub { $_[0]->format },
         f => sub { $_[0]->file },
         g => sub { $_[0]->genre },
         i => sub { $_[0]->id },
+        L => sub { $_[0]->duration },
         l => sub { $_[0]->time },
         M => sub { $_[0]->date },
         m => sub { $_[0]->last_modified },
@@ -27,9 +32,12 @@ use String::Formatter method_stringf => {
         n => sub { $_[0]->track },
         P => sub { $_[0]->performer },
         p => sub { $_[0]->pos },
+        r => sub { $_[0]->range },
         t => sub { $_[0]->title },
         s => sub { $_[0]->artistsort },
         S => sub { $_[0]->albumartistsort },
+        W => sub { $_[0]->musicbrainz_workid },
+        R => sub { $_[0]->musicbrainz_releasetrackid },
         T => sub { $_[0]->musicbrainz_trackid },
         I => sub { $_[0]->musicbrainz_albumartistid },
         B => sub { $_[0]->musicbrainz_albumid },
@@ -116,21 +124,29 @@ Length of the song in seconds. (format code: %l)
 has album         => ( rw, isa => Str );
 has albumartist   => ( rw, isa => Str );
 has artist        => ( rw, isa => Str );
+has albumsort     => ( rw, isa => Str );
 has composer      => ( rw, isa => Str );
+has comment       => ( rw, isa => Str );
 has date          => ( rw, isa => Str );
 has disc          => ( rw, isa => Str );
 has file          => ( rw, isa => Str, required );
+has label         => ( rw, isa => Str );
+has format        => ( rw, isa => Str );
 has genre         => ( rw, isa => Str );
 has last_modified => ( rw, isa => Str );
 has id            => ( rw, isa => Int );
 has name          => ( rw, isa => Str );
 has pos           => ( rw, isa => Int );
 has performer     => ( rw, isa => Str );
+has range         => ( rw, isa => Str );
 has title         => ( rw, isa => Str );
 has track         => ( rw, isa => Str );
+has duration      => ( rw, isa => Str );
 has time          => ( rw, isa => Int );
 has artistsort    => ( rw, isa => Str );
 has albumartistsort            => ( rw, isa => Str );
+has musicbrainz_workid         => ( rw, isa => Str );
+has musicbrainz_releasetrackid => ( rw, isa => Str );
 has musicbrainz_trackid        => ( rw, isa => Str );
 has musicbrainz_albumartistid  => ( rw, isa => Str );
 has musicbrainz_albumid        => ( rw, isa => Str );
